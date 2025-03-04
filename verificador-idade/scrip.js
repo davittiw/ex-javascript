@@ -1,58 +1,44 @@
-textoResult.innerHTML = ""
-
 function verificar() {
     var anoAtual = new Date().getFullYear()
-    var recebeData = document.getElementById('numtxt').value
-
-    var textoResult = document.getElementById('resultado-text')
-    var sexo = document.querySelector('input[name="radioes"]:checked')
-    var imagem = document.getElementById('imagem')
-
-    if (!recebeData || !sexo) {
-        textoResult.innerHTML = "Por favor, insira os dados!"
-        imagem.src = ""
-        return
-    }
+    var recebeData = document.getElementById('numtxt')
+    var res = document.getElementById('res')
+    var sex = document.getElementsByName('radsex')
     
-    if (recebeData.length !== 4) {
-        textoResult.innerHTML = "Só serão aceitos 4 números."
-        imagem.src = ""
+    if (recebeData.value.length == 0 || Number(recebeData.value) > anoAtual || Number(recebeData.value) < 0) {
+        window.alert('Verifique os dados e tente novemente!')
         return
-    }
+    } else {
+        var calculaIdade = anoAtual - Number(recebeData.value)
+        var genero = ''
+        var img = document.createElement('img')
+        img.setAttribute('id', 'foto')
 
-    var calculaIdade = anoAtual - recebeData
-    
-    if (calculaIdade < 0) {
-        textoResult.innerHTML = "Por favor, Insira uma data válida"
-        imagem.src = ""
-        return
-    }
+        if (sex[0].checked) {
+            genero = 'Homem'
+            if (calculaIdade >= 0 && calculaIdade < 10) {
+                img.setAttribute('src', 'crianca-homem.jpg')
+            } else if (calculaIdade < 21) {
+                img.setAttribute('src', 'jovem-homem.jpg')
+            } else if (calculaIdade < 50){
+                img.setAttribute('src', 'adulto-homem.jpg')
+            } else {
+                img.setAttribute('src', 'idoso-homem.jpg')
+            }
+        } else if (sex[1].checked) {
+            genero = 'Mulher'
+            if (calculaIdade >= 0 && calculaIdade < 10) {
+                img.setAttribute('src', 'crianca-mulher.jpg')
+            } else if (calculaIdade < 21) {
+                img.setAttribute('src', 'jovem-mulher.jpg')
+            } else if (calculaIdade < 50){
+                img.setAttribute('src', 'adulto-mulher.jpg')
+            } else {
+                img.setAttribute('src', 'idosa-mulher.jpg')
+            }
+        }
 
-    if (sexo.value === "Feminino" && calculaIdade <= 15) {
-        textoResult.innerHTML = `Menina de ${calculaIdade} anos.`
-        imagem.src = 'images-p/crianca-mulher.jpg'
-    } else if (sexo.value === "Feminino" && calculaIdade > 15 && calculaIdade <= 25) {
-        textoResult.innerHTML = `Adolescente de ${calculaIdade} anos.`
-        imagem.src = 'images-p/jovem-mulher.jpg'
-    } else if (sexo.value === "Feminino" && calculaIdade > 25 && calculaIdade <= 49) {
-        textoResult.innerHTML = `Adulta de ${calculaIdade} anos.`
-        imagem.src = 'images-p/adulto-mulher.jpg'
-    } else if (sexo.value === "Feminino" && calculaIdade > 49 && calculaIdade <= 100) {
-        textoResult.innerHTML = `Idosa ${calculaIdade} anos.`
-        imagem.src = 'images-p/idosa-mulher.jpg'
-    } else if (sexo.value === "Masculino" && calculaIdade <= 15) {
-        textoResult.innerHTML = `Menino de ${calculaIdade} anos.`
-        imagem.src = 'images-p/crianca-homem.jpg'
-    } else if (sexo.value === "Masculino" && calculaIdade > 15 && calculaIdade <= 25) {
-        textoResult.innerHTML = `Adolescente de ${calculaIdade} anos.`
-        imagem.src = 'images-p/jovem-homem.jpg'
-    } else if (sexo.value === "Masculino" && calculaIdade > 25 && calculaIdade <= 45) {
-        textoResult.innerHTML = `Adulto de ${calculaIdade} anos.`
-        imagem.src = 'images-p/adulto-homem.jpg'
-    } else if (sexo.value === "Masculino" && calculaIdade > 45 && calculaIdade <= 100) {
-        textoResult.innerHTML = `Idoso ${calculaIdade} anos.`
-        imagem.src = 'images-p/idoso-homem.jpg'
+        res.style.textAlign = 'center'
+        res.innerHTML = `Detectamos ${genero} com ${calculaIdade} anos.`
+        res.appendChild(img)
     }
 }
-
-window.onload = verificar
