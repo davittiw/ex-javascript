@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contador Repetidor</title>
+  </head>
+  <body>
+    <header>
+        <h1>Contador Repetidor</h1>
+    </header>
+
+    <section>
+        <div class="entrada">
+            <p>Início: <input type="number" name="inicio" id="txti"></p>
+            <p>Fim: <input type="number" name="fim" id="txtf"></p>
+            <p>Passo: <input type="number" name="passo" id="txtp"></p>
+
+            <p class="envia"><input type="button" value="Contar" onclick="contar()"></p>
+        </div>
+
+        <div class="saida">
+            <p id="res">Aguarde resultados.</p>
+            <p id="resNum"></p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
