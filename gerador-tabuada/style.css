@@ -1,45 +1,45 @@
 * {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
-body {
-    background-color: rgb(0, 0, 0);
-    overflow: hidden;
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    justify-content: center;
+    position: absolute;
     font: normal 15pt arial;
 }
 
 header {
-    margin: auto;
     text-align: center;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 15px;
 }
 
 section {
-    background-color: white;
-    width: 500px;
-    height: 300px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 20px;
+    background-color: rebeccapurple;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    align-content: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.entrada {
-    color: black;
-    margin-bottom: 10px;
+.entrada, .saida {
+    color: white;
 }
 
-.entrada p {
-    margin-bottom: 10px;
+.envia {
+    margin: 3px;
 }
 
-.envia input{
-    padding: 5px;
-}
-
-.saida {
-    margin-top: 10px;
+.envia input {
+    padding: 2px;
+    width: 120px;
+    border: none;
 }
