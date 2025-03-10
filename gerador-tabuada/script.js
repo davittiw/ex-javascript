@@ -1,6 +1,6 @@
 function gerar () {
     let num = document.getElementById('txtn')
-    let tab = document.getElementById('tab')
+    let res = document.getElementById('saida')
 
     if (num.value.length == 0) {
         window.alert('Por favor, digite um número!')
