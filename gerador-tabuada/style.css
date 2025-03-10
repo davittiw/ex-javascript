@@ -11,6 +11,7 @@ html, body {
     justify-content: center;
     position: absolute;
     font: normal 15pt arial;
+    color: white;
 }
 
 header {
@@ -28,10 +29,6 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.entrada, .saida {
-    color: white;
 }
 
 .envia {
